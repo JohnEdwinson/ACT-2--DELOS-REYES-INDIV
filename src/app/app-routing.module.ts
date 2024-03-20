@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { MyCustomPageWithId } from './my-custom-page/custom-page-with-id/custom-page-with-id';
 const routes: Routes = [
   {
     path: 'home',
@@ -10,6 +10,14 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'my-custom-page',
+    loadChildren: () => import('./my-custom-page/my-custom-page.module').then( m => m.MyCustomPageModule)
+  },
+  {
+    path: 'my-custom-page/:id', 
+    component: MyCustomPageWithId
   },
   
 ];
